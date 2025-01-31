@@ -1,12 +1,14 @@
 import CircleButton from "@/components/CircleButton";
 import PrimaryButton from "@/components/PrimaryButton";
 import { useContext } from "react";
-import { UserContext } from "@/states/UserState";
+import { UserStateContext } from "@/states/UserState";
 import { useCountState } from "@/app/count/CountState";
 
 export default function CountPage() {
-  const user = useContext(UserContext)!;
+  const user = useContext(UserStateContext)!;
   const count = useCountState();
+
+  console.log("CountPage Render");
 
   return (
     <div className="flex h-screen flex-col items-center justify-center">
@@ -22,6 +24,7 @@ export default function CountPage() {
     </div>
   );
 }
+
 // export default function CountPage() {
 //   const params = useParams();
 //   const navigate = useNavigate();
