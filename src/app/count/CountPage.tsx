@@ -1,17 +1,12 @@
 import CircleButton from "@/components/CircleButton";
 import PrimaryButton from "@/components/PrimaryButton";
-import { useNavigate } from "react-router";
-import { useParams } from "react-router";
 import { useContext } from "react";
 import { UserContext } from "@/states/UserState";
 import { useCountState } from "@/app/count/CountState";
 
 export default function CountPage() {
-  const params = useParams();
-  const navigate = useNavigate();
-
   const user = useContext(UserContext)!;
-  const count = useCountState(params, navigate);
+  const count = useCountState();
 
   return (
     <div className="flex h-screen flex-col items-center justify-center">

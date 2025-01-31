@@ -1,19 +1,19 @@
 import { useEffect } from "react";
-import { NavigateFunction, Params } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
-export function useCountState(
-  params: Readonly<Params<string>>,
-  navigate: NavigateFunction,
-) {
+export function useCountState() {
+  const params = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setCount(Number(params.count) || 0);
+  }, []);
+
   const setCount = (count: number) => {
     if (count < 0) count = 0;
 
     navigate(`/count/${count}`, { replace: true });
   };
-
-  useEffect(() => {
-    setCount(Number(params.count) || 0);
-  }, []);
 
   return {
     get value() {
