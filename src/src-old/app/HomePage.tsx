@@ -1,6 +1,6 @@
-import CircleButton from "@/components/CircleButton";
-import PrimaryButton from "@/components/PrimaryButton";
-import { UserStateContext } from "@/states/UserState";
+import CircleButton from "@/src-old/components/CircleButton";
+import PrimaryButton from "@/src-old/components/PrimaryButton";
+import { UserStateContext } from "@/src-old/states/UserState";
 import { useContext } from "react";
 
 export default function HomePage() {
