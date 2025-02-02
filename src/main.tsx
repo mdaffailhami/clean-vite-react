@@ -6,17 +6,31 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, useRoutes } from "react-router";
 import { UserStateProvider } from "@/states/UserState";
 
-console.log(routes);
-function App() {
-  return <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>;
-}
+createRoot(document.getElementById("app")!).render(<App />);
 
-createRoot(document.getElementById("app")!).render(
-  <StrictMode>
+function App() {
+  // <StrictMode></StrictMode>
+  return (
     <UserStateProvider>
       <BrowserRouter>
-        <App />
+        <Routes />
       </BrowserRouter>
     </UserStateProvider>
-  </StrictMode>,
-);
+  );
+}
+
+function Routes() {
+  const routesElement = useRoutes(routes);
+
+  console.log("Routes render");
+  console.log(routes);
+
+  // Prevent trailing slash
+  const pathname = window.location.pathname;
+  if (pathname != "/" && pathname.endsWith("/")) {
+    window.location.pathname = pathname.slice(0, -1);
+    window.history.replaceState({}, "", pathname);
+  }
+
+  return <Suspense fallback={<p>Loading...</p>}>{routesElement}</Suspense>;
+}

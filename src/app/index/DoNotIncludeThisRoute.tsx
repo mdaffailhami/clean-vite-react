@@ -1,6 +1,9 @@
 import { Link } from "react-router";
 
-export default function PrimaryButton(props: {
+//
+// DO NOT INCLUDE THIS ROOT, SINCE THIS IS A COMPONENT NOT A PAGE
+//
+export default function DoNotIncludeThisRoute(props: {
   to: string;
   children: React.ReactNode;
 }) {

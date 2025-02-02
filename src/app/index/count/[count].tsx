@@ -1,8 +1,8 @@
-import CircleButton from "@/src-old/components/CircleButton";
-import PrimaryButton from "@/src-old/components/PrimaryButton";
+import CircleButton from "@/components/CircleButton";
+import PrimaryButton from "@/components/PrimaryButton";
 import { useContext } from "react";
-import { UserStateContext } from "@/src-old/states/UserState";
-import { useCountState } from "@/src-old/app/count/CountState";
+import { UserStateContext } from "@/states/UserState";
+import { useCountState } from "@/app/index/count/CountState";
 
 export default function CountPage() {
   const user = useContext(UserStateContext)!;

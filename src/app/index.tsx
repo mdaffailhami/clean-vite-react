@@ -1,24 +1,35 @@
-import CircleButton from "@/components/CircleButton";
-import PrimaryButton from "@/components/PrimaryButton";
-import { UserStateContext } from "@/states/UserState";
-import { useContext } from "react";
+import { Outlet } from "react-router";
 
-export default function HomePage() {
-  const user = useContext(UserStateContext)!;
-
-  console.log("HomePage Render");
-
+export default function MainLayout() {
   return (
-    <div className="flex h-screen flex-col items-center justify-center">
-      <h1 className="mb-4 text-6xl font-bold">Home Page</h1>
-      <p className="text-lg">
-        Welcome <i>{user.value ? user.value.name : "Guest"}</i>
-      </p>
-      <PrimaryButton to="/count/0">Go to Count Page</PrimaryButton>
-      <section className="fixed right-8 bottom-8 flex flex-col gap-3">
-        <CircleButton onClick={user.signIn}>Sign In</CircleButton>
-        <CircleButton onClick={user.signOut}>Sign Out</CircleButton>
-      </section>
-    </div>
+    <>
+      <header>
+        <nav className="flex items-center justify-around bg-orange-500 py-4 font-bold text-white">
+          <a href="/">
+            <img className="h-8 w-8" src="/vite.svg" alt="logo" />
+          </a>
+          <ul className="flex items-center gap-4">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/count">Count</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <Outlet />
+      <footer className="bg-gray-200 py-4 text-center text-sm text-gray-600">
+        Created by{" "}
+        <a
+          href="https://mdaffailhami.github.io"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Daffa Ilhami{" "}
+        </a>
+        with ❤️
+      </footer>
+    </>
   );
 }
